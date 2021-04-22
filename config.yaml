@@ -1,0 +1,249 @@
+{
+  "external-controller": "127.0.0.1:9090",
+  "port": 7890,
+  "socks-port": 7891,
+  "redir-port": 7892,
+  "allow-lan": true,
+  "proxies": [
+    {
+      "type": "ss",
+      "cipher": "rc4-md5",
+      "name": "🇨🇳 星际隧道 - 台湾节点",
+      "password": "5trq1f",
+      "port": "15205",
+      "server": "116.129.252.168",
+      "udp": true
+    },
+    {
+      "type": "ss",
+      "cipher": "rc4-md5",
+      "name": "🇸🇬 星际隧道 - 狮城节点",
+      "password": "5trq1f",
+      "port": "15205",
+      "server": "162.14.15.151",
+      "udp": true
+    },
+    {
+      "type": "ss",
+      "cipher": "rc4-md5",
+      "name": "🇯🇵 星际隧道 - 日本节点",
+      "password": "5trq1f",
+      "port": "15205",
+      "server": "116.129.252.83",
+      "udp": true
+    },
+    {
+      "type": "ss",
+      "cipher": "rc4-md5",
+      "name": "🇺🇸 星际隧道 - 美国节点",
+      "password": "5trq1f",
+      "port": "15205",
+      "server": "162.14.15.13",
+      "udp": true
+    },
+    {
+      "type": "ss",
+      "cipher": "rc4-md5",
+      "name": "🇰🇷 星际隧道 - 韩国节点",
+      "password": "5trq1f",
+      "port": "15205",
+      "server": "162.14.15.16",
+      "udp": true
+    },
+    {
+      "type": "ss",
+      "cipher": "rc4-md5",
+      "name": "🇭🇰 星际隧道 - 香港节点",
+      "password": "5trq1f",
+      "port": "15205",
+      "server": "42.157.192.31",
+      "udp": true
+    }
+  ],
+  "proxy-groups": [
+    {
+      "name": "🚀 节点选择",
+      "type": "select",
+      "proxies": [
+          "🇭🇰 香港节点",
+          "🇨🇳 台湾节点",
+          "🇸🇬 狮城节点",
+          "🇯🇵 日本节点",
+          "🇰🇷 韩国节点",
+          "🇺🇲 美国节点",
+          "🌀 手动切换",
+          "🎯 全球直连"
+      ]
+    },
+    {
+      "name": "🌀 手动切换",
+      "type": "select",
+      "proxies": [
+          "🇨🇳 星际隧道 - 台湾节点",
+          "🇸🇬 星际隧道 - 狮城节点",
+          "🇯🇵 星际隧道 - 日本节点",
+          "🇺🇸 星际隧道 - 美国节点",
+          "🇰🇷 星际隧道 - 韩国节点",
+          "🇭🇰 星际隧道 - 香港节点"
+      ]
+    },
+    {
+      "name": "📲 电报推特",
+      "type": "select",
+      "proxies": [
+          "🚀 节点选择",
+          "🌀 手动切换",
+          "🇭🇰 香港节点",
+          "🇨🇳 台湾节点",
+          "🇸🇬 狮城节点",
+          "🇯🇵 日本节点",
+          "🇰🇷 韩国节点",
+          "🇺🇲 美国节点"
+      ]
+    },
+    {
+      "name": "📹 油管视频",
+      "type": "select",
+      "proxies": [
+          "🚀 节点选择",
+          "🌀 手动切换",
+          "🇭🇰 香港节点",
+          "🇨🇳 台湾节点",
+          "🇸🇬 狮城节点",
+          "🇯🇵 日本节点",
+          "🇰🇷 韩国节点",
+          "🇺🇲 美国节点"
+      ]
+    },
+    {
+      "name": "🎥 奈飞视频",
+      "type": "select",
+      "proxies": [
+          "🇸🇬 狮城节点",
+          "🇭🇰 香港节点",
+          "🇨🇳 台湾节点",
+          "🇯🇵 日本节点",
+          "🇰🇷 韩国节点",
+          "🇺🇲 美国节点",
+          "🌀 手动切换"
+      ]
+    },
+    {
+      "name": "📺 巴哈姆特",
+      "type": "select",
+      "proxies": [
+          "🇨🇳 台湾节点",
+          "🚀 节点选择",
+          "🌀 手动切换"
+      ]
+    },
+    {
+      "name": "📺 哔哩哔哩",
+      "type": "select",
+      "proxies": [
+          "🎯 全球直连",
+          "🇨🇳 台湾节点",
+          "🇭🇰 香港节点"
+      ]
+    },
+    {
+      "name": "Ⓜ️ 微软服务",
+      "type": "select",
+      "proxies": [
+          "🎯 全球直连",
+          "🚀 节点选择",
+          "🌀 手动切换"
+      ]
+    },
+    {
+      "name": "🍎 苹果服务",
+      "type": "select",
+      "proxies": [
+          "🎯 全球直连",
+          "🚀 节点选择",
+          "🌀 手动切换"
+      ]
+    },
+    {
+      "name": "🎮 游戏平台",
+      "type": "select",
+      "proxies": [
+          "🎯 全球直连",
+          "🚀 节点选择",
+          "🌀 手动切换"
+      ]
+    },
+    {
+      "name": "🎯 全球直连",
+      "type": "select",
+      "proxies": [
+          "DIRECT"
+      ]
+    },
+    {
+      "name": "🍃 广告拦截",
+      "type": "select",
+      "proxies": [
+          "REJECT",
+          "DIRECT"
+      ]
+    },
+    {
+      "name": "🐟 漏网之鱼",
+      "type": "select",
+      "proxies": [
+          "🚀 节点选择",
+          "🌀 手动切换",
+          "🎯 全球直连"
+      ]
+    },
+    {
+      "name": "🇭🇰 香港节点",
+      "type": "select",
+      "proxies": [
+          "🇭🇰 星际隧道 - 香港节点"
+      ]
+    },
+    {
+      "name": "🇨🇳 台湾节点",
+      "type": "select",
+      "proxies": [
+          "🇨🇳 星际隧道 - 台湾节点"
+      ]
+    },
+    {
+      "name": "🇸🇬 狮城节点",
+      "type": "select",
+      "proxies": [
+          "🇸🇬 星际隧道 - 狮城节点"
+      ]
+    },
+    {
+      "name": "🇯🇵 日本节点",
+      "type": "select",
+      "proxies": [
+          "🇯🇵 星际隧道 - 日本节点"
+      ]
+    },
+    {
+      "name": "🇰🇷 韩国节点",
+      "type": "select",
+      "proxies": [
+          "🇰🇷 星际隧道 - 韩国节点"
+      ]
+    },
+    {
+      "name": "🇺🇲 美国节点",
+      "type": "select",
+      "proxies": [
+          "🇺🇸 星际隧道 - 美国节点"
+      ]
+    }
+  ],
+  "rules": [
+      "DOMAIN-SUFFIX,notion.so,🇭🇰 香港节点",
+      "DOMAIN-SUFFIX,akamaized.net,🇯🇵 日本节点",
+      "DOMAIN-SUFFIX,cygames.jp,🇯🇵 日本节点",
+      "DOMAIN-SUFFIX,hou.lu,🎯 全球直连name"
+  ]
+}
