@@ -26,6 +26,5 @@ func init() {
 }
 
 func main() {
-	fmt.Println("获取配置文件的port", viper.GetInt("port"))
-	fmt.Println("获取配置文件的redis", viper.Get(`proxy-groups`))
+	fmt.Println("获取配置文件的redis", viper.Get(`proxy-groups.Name`))
 }
