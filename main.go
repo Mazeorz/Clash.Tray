@@ -12,16 +12,18 @@ func main() {
 }
 
 func onReady() {
-	systray.SetIcon(Date)
+	systray.SetIcon(Date5)
 	systray.SetTitle("Clash.Tray")
 	systray.SetTooltip("A Tray tool for Clash")
 	systray.AddMenuItem("Clash.Tray", "")
 	systray.AddSeparator()
+
 	RuleSwitch := systray.AddMenuItem("Rule", "")
 	mGlobal := RuleSwitch.AddSubMenuItem("Global", "")
 	mRule := RuleSwitch.AddSubMenuItem("Rule", "")
 	mDirect := RuleSwitch.AddSubMenuItem("Direct", "")
 	mQuit := systray.AddMenuItem("Exit", "Quit")
+
 	go func() {
 		for {
 			select {
