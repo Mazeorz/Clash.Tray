@@ -2,9 +2,8 @@ package main
 
 import (
 	"C"
-	"Clash.Tray/icon"
+	. "Clash.Tray/icon"
 	"github.com/getlantern/systray"
-	"github.com/getlantern/systray/example/icon"
 	"os"
 )
 
@@ -13,21 +12,38 @@ func main() {
 }
 
 func onReady() {
-	systray.SetIcon(icon.Data2)
+	systray.SetIcon(Date)
 	systray.SetTitle("Clash.Tray")
 	systray.SetTooltip("A Tray tool for Clash")
 	systray.AddMenuItem("Clash.Tray", "")
 	systray.AddSeparator()
 	RuleSwitch := systray.AddMenuItem("Rule", "")
-	RuleSwitch.AddSubMenuItem("Global", "")
-	RuleSwitch.AddSubMenuItem("Rule", "")
-	RuleSwitch.AddSubMenuItem("Direct", "")
+	mGlobal := RuleSwitch.AddSubMenuItem("Global", "")
+	mRule := RuleSwitch.AddSubMenuItem("Rule", "")
+	mDirect := RuleSwitch.AddSubMenuItem("Direct", "")
 	mQuit := systray.AddMenuItem("Exit", "Quit")
 	go func() {
-		select {
-		case <-mQuit.ClickedCh:
-			systray.Quit()
-			return
+		for {
+			select {
+			case <-mDirect.ClickedCh:
+				systray.SetIcon(Date2)
+				mDirect.Check()
+				mRule.Uncheck()
+				mGlobal.Uncheck()
+			case <-mRule.ClickedCh:
+				systray.SetIcon(Date3)
+				mDirect.Uncheck()
+				mRule.Check()
+				mGlobal.Uncheck()
+			case <-mGlobal.ClickedCh:
+				systray.SetIcon(Date4)
+				mDirect.Uncheck()
+				mRule.Uncheck()
+				mGlobal.Check()
+			case <-mQuit.ClickedCh:
+				systray.Quit()
+				return
+			}
 		}
 	}()
 }
