@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://github.com/Dreamacro/clash/raw/master/docs/logo.png" alt="Clash" width="200">
+  <img src="https://raw.githubusercontent.com/Mazeorz/Clash.Tray/master/icon/Clash.Tray.png" alt="Clash" width="200">
   <br>Clash.Tray<br>
 </h1>
 
