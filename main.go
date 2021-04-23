@@ -12,7 +12,7 @@ func main() {
 }
 
 func onReady() {
-	systray.SetIcon(Date5)
+	systray.SetIcon(Date0)
 	systray.SetTitle("Clash.Tray")
 	systray.SetTooltip("A Tray tool for Clash")
 	systray.AddMenuItem("Clash.Tray", "")
