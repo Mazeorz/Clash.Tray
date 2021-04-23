@@ -1,12 +1,15 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"github.com/spf13/viper"
 	"log"
+	"os"
 )
 
 func init() {
+
 	viper.SetConfigName("config") // 读取yaml配置文件
 
 	//viper.AddConfigPath("/etc/appname/")   //设置配置文件的搜索目录
@@ -27,5 +30,19 @@ func init() {
 
 func main() {
 	fmt.Println("获取配置文件的port", viper.GetInt("port"))
-	fmt.Println("获取配置文件的redis", viper.Get(`proxy-groups`))
+	fmt.Println("获取配置文件的redis", viper.Get(`proxies`))
+	fmt.Println(ReadLine(1))
+}
+
+func ReadLine(lineNumber int) string {
+	file, _ := os.Open("config.yaml")
+	fileScanner := bufio.NewScanner(file)
+	lineCount := 1
+	for fileScanner.Scan() {
+		if lineCount == lineNumber {
+			return fileScanner.Text()
+		}
+		lineCount++
+	}
+	return ""
 }
