@@ -30,9 +30,12 @@ func onReady() {
 		for {
 			select {
 			case <-mTitle.ClickedCh:
-				open.Run("https://github.com/Mazeorz/Clash.Tray")
+				err := open.Start("https://github.com/Mazeorz/Clash.Tray")
+				if err != nil {
+					return
+				}
 			case <-mConfig.ClickedCh:
-				controller.ConfigMain()
+				controller.MenuConfig()
 			case <-mDirect.ClickedCh:
 				systray.SetIcon(Date2)
 				mDirect.Check()
