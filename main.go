@@ -2,8 +2,10 @@ package main
 
 import (
 	"C"
+	"Clash.Tray/controller"
 	. "Clash.Tray/icon"
 	"github.com/getlantern/systray"
+	"github.com/skratchdot/open-golang/open"
 	"os"
 )
 
@@ -15,18 +17,22 @@ func onReady() {
 	systray.SetIcon(Date0)
 	systray.SetTitle("Clash.Tray")
 	systray.SetTooltip("A Tray tool for Clash")
-	systray.AddMenuItem("Clash.Tray", "")
+	mTitle := systray.AddMenuItem("Clash.Tray", "")
 	systray.AddSeparator()
-
-	RuleSwitch := systray.AddMenuItem("Rule", "")
-	mGlobal := RuleSwitch.AddSubMenuItem("Global", "")
-	mRule := RuleSwitch.AddSubMenuItem("Rule", "")
-	mDirect := RuleSwitch.AddSubMenuItem("Direct", "")
+	mConfig := systray.AddMenuItem("配置管理", "")
+	RuleSwitch := systray.AddMenuItem("代理模式", "")
+	mGlobal := RuleSwitch.AddSubMenuItem("全局", "")
+	mRule := RuleSwitch.AddSubMenuItem("规则", "")
+	mDirect := RuleSwitch.AddSubMenuItem("直连", "")
 	mQuit := systray.AddMenuItem("Exit", "Quit")
 
 	go func() {
 		for {
 			select {
+			case <-mTitle.ClickedCh:
+				open.Run("https://github.com/Mazeorz/Clash.Tray")
+			case <-mConfig.ClickedCh:
+				controller.ConfigMain()
 			case <-mDirect.ClickedCh:
 				systray.SetIcon(Date2)
 				mDirect.Check()
