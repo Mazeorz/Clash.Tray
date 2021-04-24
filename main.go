@@ -2,6 +2,7 @@ package main
 
 import (
 	"C"
+	"Clash.Tray/controller"
 	. "Clash.Tray/icon"
 	"github.com/getlantern/systray"
 	"github.com/skratchdot/open-golang/open"
@@ -31,7 +32,7 @@ func onReady() {
 			case <-mTitle.ClickedCh:
 				open.Run("https://github.com/Mazeorz/Clash.Tray")
 			case <-mConfig.ClickedCh:
-
+				controller.ConfigMain()
 			case <-mDirect.ClickedCh:
 				systray.SetIcon(Date2)
 				mDirect.Check()
