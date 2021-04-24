@@ -19,20 +19,47 @@ func onReady() {
 	systray.SetTooltip("A Tray tool for Clash")
 	mTitle := systray.AddMenuItem("Clash.Tray", "")
 	systray.AddSeparator()
+	updateConfig := systray.AddMenuItem("更新配置", "")
 	mConfig := systray.AddMenuItem("配置管理", "")
+	systray.AddSeparator()
+	mWork := systray.AddMenuItem("运作模式", "")
+	mGeneral := mWork.AddSubMenuItem("普通模式", "")
+	mAdvanced := mWork.AddSubMenuItem("Tun模式", "")
+	mUwp := systray.AddMenuItem("UWP回环", "")
+	systray.AddSeparator()
 	RuleSwitch := systray.AddMenuItem("代理模式", "")
 	mGlobal := RuleSwitch.AddSubMenuItem("全局", "")
 	mRule := RuleSwitch.AddSubMenuItem("规则", "")
 	mDirect := RuleSwitch.AddSubMenuItem("直连", "")
-	mQuit := systray.AddMenuItem("Exit", "Quit")
+	mSysProxy := systray.AddMenuItem("系统代理", "")
+	mSysOn := mSysProxy.AddSubMenuItem("开启系统代理", "")
+	mSysOff := mSysProxy.AddSubMenuItem("关闭系统代理", "")
+	systray.AddSeparator()
+
+	mQuit := systray.AddMenuItem("退出", "Quit")
 
 	go func() {
 		for {
 			select {
 			case <-mTitle.ClickedCh:
-				open.Run("https://github.com/Mazeorz/Clash.Tray")
+				err := open.Start("https://github.com/Mazeorz/Clash.Tray")
+				if err != nil {
+					return
+				}
 			case <-mConfig.ClickedCh:
-				controller.ConfigMain()
+				controller.MenuConfig()
+			case <-updateConfig.ClickedCh:
+
+			case <-mGeneral.ClickedCh:
+
+			case <-mAdvanced.ClickedCh:
+
+			case <-mUwp.ClickedCh:
+
+			case <-mSysOn.ClickedCh:
+
+			case <-mSysOff.ClickedCh:
+
 			case <-mDirect.ClickedCh:
 				systray.SetIcon(Date2)
 				mDirect.Check()
