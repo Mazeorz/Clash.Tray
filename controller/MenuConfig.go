@@ -21,7 +21,96 @@ func StyleMenuRun(w *walk.MainWindow, SizeW int32, SizeH int32) {
 
 }
 
+type ConfigInfo struct {
+	Index   int
+	Name    string
+	Byte    string
+	Time    string
+	Url     string
+	checked bool
+}
+
+type ConfigInfoModel struct {
+	walk.TableModelBase
+	//walk.SorterBase
+	sortColumn int
+	//sortOrder  walk.SortOrder
+	items []*ConfigInfo
+}
+
+func NewConfigInfoModel() *ConfigInfoModel {
+	m := new(ConfigInfoModel)
+	m.items = make([]*ConfigInfo, 3)
+	m.items[0] = &ConfigInfo{Index: 0, Name: "Pre", Byte: "20KB", Time: "4/20 03:00", Url: "id9.com"}
+	m.items[1] = &ConfigInfo{Index: 0, Name: "Pre2", Byte: "25KB", Time: "4/20 03:00", Url: "id9.com1"}
+	m.items[2] = &ConfigInfo{Index: 0, Name: "Pre", Byte: "20KB", Time: "4/20 03:00", Url: "id9.com"}
+	return m
+}
+
+func (m *ConfigInfoModel) Checked(row int) bool {
+	return m.items[row].checked
+}
+
+func (m *ConfigInfoModel) RowCount() int {
+	return len(m.items)
+}
+
+//func (m *ConfigInfoModel) Sort(col int,order walk.SortOrder) error{
+//	m.sortColumn,m.sortOrder = col,order
+//	sort.Stable(m)
+//	return m.SorterBase.Sort(col,order)
+//}
+
+//func (m *ConfigInfoModel) Len() int {
+//	return len(m.items)
+//}
+
+//func (m *ConfigInfoModel) Less(i,j int) bool {
+//	a,b := m.items[i],m.items[j]
+//	c:=func(ls bool)bool{
+//		if m.sortOrder == walk.SortAscending{
+//			return ls
+//		}
+//		return !ls
+//	}
+//	switch m.sortColumn {
+//	case 0:
+//		return c(a.Index < b.Index)
+//	case 1:
+//		return c(a.Name<b.Name)
+//	case 2:
+//		return c(a.Byte<b.Byte)
+//	case 3:
+//		return c(a.Time<b.Time)
+//	case 4:
+//		return c(a.Url<b.Url)
+//	}
+//	panic("unreachable")
+//}
+
+//func (m *ConfigInfoModel) Swap(i,j int) {
+//	m.items[i],m.items[j] = m.items[j],m.items[i]
+//}
+
+func (m *ConfigInfoModel) Value(row, col int) interface{} {
+	item := m.items[row]
+
+	switch col {
+	case 0:
+		return item.Name
+	case 1:
+		return item.Byte
+	case 2:
+		return item.Time
+	case 3:
+		return item.Url
+	}
+	panic("unexpected col")
+}
+
 func MenuConfig() {
+	var model = NewConfigInfoModel()
+	var tv *walk.TableView
 	var MenuConfig *walk.MainWindow
 	err := MainWindow{
 		Visible:  false,
@@ -35,15 +124,17 @@ func MenuConfig() {
 				Layout: VBox{},
 				Children: []Widget{
 					TableView{
+						AssignTo:         &tv,
 						CheckBoxes:       false,
-						ColumnsOrderable: false,
-						MultiSelection:   false,
+						ColumnsOrderable: true,
+						MultiSelection:   true,
 						Columns: []TableViewColumn{
 							{Title: "配置名称"},
 							{Title: "文件大小"},
 							{Title: "更新日期"},
 							{Title: "订阅地址", Width: 295},
 						},
+						Model: model,
 					},
 				},
 			},
